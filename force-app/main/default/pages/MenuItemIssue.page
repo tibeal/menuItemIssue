@@ -1,0 +1,23 @@
+<apex:page docType="html-5.0" >
+    <apex:includeLightning/>
+
+    <div id="menuItemIssue" class="slds-var-p-around_small"></div>
+    <script>
+        $Lightning.use("c:MenuItemApp", function () {
+            $Lightning.createComponent(
+                "c:MenuItemIssue",
+                {},
+                "menuItemIssue",
+                function(components, status, errorMessages){
+                    if (status === "INCOMPLETE") {
+                        console.log("No response from server or client is offline.")
+                        // Show offline error
+                    }
+                    else if (status === "ERROR") {
+                        console.log("Error message: " + errorMessages[0].message);
+                    }
+                }
+            );
+        });
+    </script>
+</apex:page>
